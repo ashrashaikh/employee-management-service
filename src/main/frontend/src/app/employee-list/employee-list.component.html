@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <h3>Employee Management App</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" class="form-cotrol" [(ngModel)]="departmentId"
+                placeholder="Enter Department Id" aria-label="Enter Department Id" />
+            <button class="btn btn-primary ms-2" (click)="getAllEmployees()">Get Employees</button>
+        </div>
+    </div>
+
+    <div class="table-responsive" *ngIf="employees && employees.length">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees">
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.email}}</td>
+                    <td>{{employee.position}}</td>
+                    <td>{{employee.salary | number}}</td>
+                    <td>
+                        <button class="btn btn-info" (click)="viewEmployeeDetails(employee.id)">View</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-4" *ngIf="!employees">
+        <span>No Employees found in this departmentId!</span>
+    </div>
+</div>

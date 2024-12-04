@@ -1,0 +1,26 @@
+
+<div class="container mt-5" *ngIf="employee">
+    <h3>Employee Information</h3>
+    
+    <form #employeeForm="ngForm" (ngSubmit)="updateEmployee()">
+        <div class="form-group">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="employee.name" required />
+        </div>
+        <div class="form-group">
+            <label for="email" class="form-label">Email:</label>
+            <input type="text" class="form-control" [(ngModel)]="employee.email" name="email" id="email" required />
+        </div>
+        <div class="form-group">
+            <label for="position" class="form-label">Position</label>
+            <input type="text" class="form-control" [(ngModel)]="employee.position" name="position" id="position" />
+        </div>
+        <div class="form-group">
+            <label for="salary" class="form-label">Salary</label>
+            <input type="number" class="form-control" [(ngModel)]="employee.salary" name="salary" id="salary" />
+        </div>
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="!employeeForm.form.valid">Amend</button>
+        <button type="button" class="btn btn-danger mt-3 ms-2" (click)="deleteEmployee()">Delete</button>
+        <button type="button" class="btn btn-secondary mt-3 ms-2" (click)="goBack()">Back</button>
+    </form>
+</div>
